@@ -1,5 +1,5 @@
 <template>
-  <div class="command-line">
+  <div id="command-line">
     <span class="machine-name">ruichen@Portfolio</span>
     <span>:</span>
     <span class="dir">{{ this.dirPath }}</span>
@@ -24,7 +24,7 @@ export default class CommandLine extends Vue.with(CommandLineProps) {}
 </script>
 
 <style lang="scss" scoped>
-.command-line {
+#command-line {
   .machine-name {
     color: #16c60c;
   }

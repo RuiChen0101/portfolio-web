@@ -16,6 +16,8 @@
 <script lang="ts">
 import { markRaw } from "@vue/reactivity";
 import { Options, Vue } from "vue-class-component";
+
+import CmdInit from "@/components/CmdInit.vue";
 import CommandLine from "@/components/CommandLine/CommandLine.vue";
 import ComponentPresenter from "@/components/ComponentPresenter.vue";
 import CommandLineInput from "@/components/CommandLine/CommandLineInput.vue";
@@ -24,25 +26,19 @@ import KeyboardHandler from "@/utility/KeyboardHandler";
 
 @Options({
   components: {
-    CommandLine,
     CommandLineInput,
     ComponentPresenter,
   },
 })
 export default class Home extends Vue {
-  private componentStacks: any[] = [];
-  private propsStack: any[] = [];
+  private componentStacks: any[] = [markRaw(CmdInit), markRaw(CommandLine)];
+  private propsStack: any[] = [{}, { dirPath: "~", command: "ls" }];
 
   private currentDir = "~";
   private keyboardHandler: KeyboardHandler = new KeyboardHandler();
 
   created(): void {
     window.addEventListener("keydown", this.onKeyDown);
-  }
-
-  async mounted(): Promise<void> {
-    this.propsStack.push({ dirPath: "~", command: "ls" });
-    this.componentStacks.push(markRaw(CommandLine));
   }
 
   destroyed(): void {

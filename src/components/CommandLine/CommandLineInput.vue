@@ -1,5 +1,5 @@
 <template>
-  <div class="command-line-input d-flex">
+  <div id="command-line-input" class="d-flex">
     <span class="machine-name">ruichen@Portfolio</span>
     <span>:</span>
     <span class="dir">{{ this.dirPath }}</span>
@@ -53,7 +53,7 @@ export default class CommandLineInput extends Vue.with(CommandLineInputProps) {
 </script>
 
 <style lang="scss" scoped>
-.command-line-input {
+#command-line-input {
   .machine-name {
     color: #16c60c;
   }
@@ -64,7 +64,6 @@ export default class CommandLineInput extends Vue.with(CommandLineInputProps) {
     margin-left: 8px;
   }
   .command-char {
-    text-align: justify;
     height: 32px;
   }
   .cursor-highlight {

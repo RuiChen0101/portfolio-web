@@ -5,7 +5,6 @@ class KeyboardHandler {
 
     public dispatchEvent(event: KeyboardEvent): void {
         const key: string = event.key;
-        console.log(key);
         switch (key) {
             case 'Backspace':
                 this.command.splice(this.cursorPosition - 1, 1);
@@ -20,18 +19,20 @@ class KeyboardHandler {
             case 'ArrowRight':
                 this.cursorPosition = Math.min(this.command.length, this.cursorPosition + 1);
                 return;
+            case ' ':
+                this.command.splice(this.cursorPosition, 0, '\xa0');
+                this.cursorPosition++;
+                return;
         }
-        if (RegExp(/^[a-zA-Z0-9 /.]$/).test(key)) {
+        if (RegExp(/^[a-zA-Z0-9/.]$/).test(key)) {
             this.command.splice(this.cursorPosition, 0, key);
             this.cursorPosition++;
         }
-        console.log(this.command);
-        console.log(this.cursorPosition);
     }
 
     public getCommandChars(): string[] { return this.command; }
 
-    public getCommand(): string { return this.command.join(''); }
+    public getCommand(): string { return this.command.join('').replace('\xa0', ' '); }
 
     public clear(): void {
         this.command = [];
