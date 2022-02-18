@@ -1,43 +1,77 @@
-import FileTypeMismatchException from "@/exception/FileTypeMismatchException";
-import NotFoundException from "@/exception/NotFoundException";
-
-enum EFileType {
-    EXECUTABLE,
-    LINK,
-    DIR,
-}
-
-interface IFile {
-    type: EFileType,
-    name: string,
-    value?: string,
-    subFiles?: { [key: string]: IFile }
-}
+import EFileType from "@/enum/EFileType";
+import { IFile } from "./FileSystem";
 
 const fileRoot: IFile = {
     type: EFileType.DIR,
     name: '/',
     value: '/',
+    date: 'Feb 18 20:24',
+    size: '4096',
     subFiles: {
         'portfolio': {
             type: EFileType.DIR,
             name: 'portfolio',
             value: '/portfolio',
+            date: 'Feb 18 20:24',
+            size: '4096',
             subFiles: {
                 'resume_zh': {
                     type: EFileType.EXECUTABLE,
                     name: 'resume_zh',
-                    value: '/resume_zh'
+                    value: '/resume_zh',
+                    date: 'Feb 18 20:24',
+                    size: '0'
                 },
                 'resume_en': {
                     type: EFileType.EXECUTABLE,
+                    date: 'Feb 18 20:24',
                     name: 'resume_en',
-                    value: '/resume_en'
+                    value: '/resume_en',
+                    size: '0'
+                },
+                'linkin': {
+                    type: EFileType.LINK,
+                    name: 'linkin',
+                    value: 'https://www.linkedin.com/in/rui0101/',
+                    date: 'Feb 18 20:24',
+                    size: '0'
+                },
+                'github': {
+                    type: EFileType.LINK,
+                    name: 'github',
+                    value: 'https://github.com/RuiChen0101',
+                    date: 'Feb 18 20:24',
+                    size: '0'
+                },
+                'download': {
+                    type: EFileType.DIR,
+                    name: 'download',
+                    value: '/download',
+                    date: 'Feb 18 20:24',
+                    size: '4096',
+                    subFiles: {
+                        'resume_zh.pdf': {
+                            type: EFileType.FILE,
+                            name: 'resume_zh.pdf',
+                            value: '/resume_zh',
+                            date: 'Feb 18 20:24',
+                            size: '0'
+                        },
+                        'resume_en.pdf': {
+                            type: EFileType.FILE,
+                            name: 'resume_en.pdf',
+                            value: '/resume_en',
+                            date: 'Feb 18 20:24',
+                            size: '0'
+                        },
+                    }
                 },
                 'snapshot': {
                     type: EFileType.DIR,
                     name: 'snapshot',
                     value: '/snapshot',
+                    date: 'Feb 18 20:24',
+                    size: '4096',
                     subFiles: {}
                 }
             }
@@ -45,63 +79,4 @@ const fileRoot: IFile = {
     }
 }
 
-class DirConfig {
-    public getDir(pwd: string, path: string): IFile {
-        const result: IFile = this.getFile(this.constructPath(pwd, path));
-        if (result.type !== EFileType.DIR) {
-            throw new FileTypeMismatchException(path);
-        }
-        return result;
-    }
-
-    public getExecutable(pwd: string, path: string): IFile {
-        const result: IFile = this.getFile(this.constructPath(pwd, path));
-        if (result.type !== EFileType.EXECUTABLE) {
-            throw new FileTypeMismatchException(path);
-        }
-        return result;
-    }
-
-    public isDirExist(pwd: string, path: string): string {
-        const constructedPath: string[] = this.constructPath(pwd, path);
-        this.getFile(constructedPath);
-        return '/' + constructedPath.join('/');
-    }
-
-    private constructPath(pwd: string, path: string): string[] {
-        const paths: string[] = path.split('/').filter((item) => {
-            return item !== '';
-        });
-        const pwds: string[] = pwd.split('/').filter((item) => {
-            return item !== '';
-        });
-        let result: string[] = [];
-        if (!path.startsWith('/')) {
-            result = pwds;
-        }
-        for (const path of paths) {
-            if (path === '..') {
-                result.pop();
-            } else if (path === '.') {
-                continue;
-            } else {
-                result.push(path);
-            }
-        }
-        return result;
-    }
-
-    private getFile(path: string[]): IFile {
-        let result: IFile = fileRoot;
-        for (const dir of path) {
-            if (result.subFiles === undefined || result.subFiles![dir] === undefined) {
-                throw new NotFoundException('/' + path.join('/'));
-            }
-            result = result.subFiles![dir];
-        }
-        return result;
-    }
-}
-
-export default DirConfig;
-export { IFile, EFileType };
+export default fileRoot;

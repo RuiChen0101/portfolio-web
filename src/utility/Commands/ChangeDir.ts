@@ -1,4 +1,4 @@
-import DirConfig from "../DirConfig";
+import FileSystem from "../FileSystem";
 import * as Injector from "../Injector";
 import IExecutable, { IExecuteResult } from "./IExecutable";
 
@@ -6,9 +6,9 @@ class ChangeDir implements IExecutable {
     public execute(pwd: string, args: string[]): IExecuteResult {
         const path: string | undefined = args[1];
         if (path === undefined) return {};
-        const dirConfig = Injector.get<DirConfig>('DirConfig');
+        const FileSystem = Injector.get<FileSystem>('FileSystem');
         try {
-            const newPath = dirConfig.isDirExist(pwd, path);
+            const newPath = FileSystem.isDirExist(pwd, path);
             return { pwd: newPath };
         } catch (err: any) {
             return {

@@ -1,10 +1,10 @@
 import CommandExecutor from "./CommandExecutor";
-import DirConfig from "./DirConfig";
+import FileSystem from "./FileSystem";
 
 
 // simple dependency injector for easy test
 const instancesPool: { [key: string]: any } = {
-    DirConfig: new DirConfig(),
+    FileSystem: new FileSystem(),
     CommandExecutor: new CommandExecutor()
 }
 

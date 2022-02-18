@@ -90,7 +90,8 @@ export default class Terminal extends Vue {
 <style lang="scss" scoped>
 #terminal {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   padding: 0px 8px;
 }
-</style>
+</style>ll
+

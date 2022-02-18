@@ -24,7 +24,7 @@ class KeyboardHandler {
                 this.cursorPosition++;
                 return;
         }
-        if (RegExp(/^[a-zA-Z0-9/.]$/).test(key)) {
+        if (RegExp(/^[a-zA-Z0-9/.-]$/).test(key)) {
             this.command.splice(this.cursorPosition, 0, key);
             this.cursorPosition++;
         }
@@ -32,7 +32,7 @@ class KeyboardHandler {
 
     public getCommandChars(): string[] { return this.command; }
 
-    public getCommand(): string { return this.command.join('').replace('\xa0', ' '); }
+    public getCommand(): string { return this.command.join('').replaceAll("\xa0", ' '); }
 
     public clear(): void {
         this.command = [];

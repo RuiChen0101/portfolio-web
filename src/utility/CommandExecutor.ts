@@ -11,11 +11,13 @@ class CommandExecutor {
             if (command === 'cd') {
                 const cd = new ChangeDir();
                 return cd.execute(pwd, args);
-            } else if (command == 'ls') {
+            } else if (command === 'ls') {
                 const ls = new List();
-                const result = ls.execute(pwd, args);
-                result.component = "ListPrint";
-                return result;
+                return ls.execute(pwd, args);
+            } else if (command === 'll') {
+                const ls = new List();
+                args.push('-l');
+                return ls.execute(pwd, args);
             } else {
                 return {
                     component: 'PlanTextPrint',
