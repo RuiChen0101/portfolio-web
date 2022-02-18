@@ -13,7 +13,7 @@ import { prop, Vue } from "vue-class-component";
 
 class CommandLineProps {
   dirPath = prop({
-    default: "~",
+    default: "/",
   });
   command = prop({
     default: "",

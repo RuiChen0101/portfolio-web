@@ -29,7 +29,7 @@ import { prop, Vue } from "vue-class-component";
 
 class CommandLineInputProps {
   dirPath = prop({
-    default: "~",
+    default: "/",
   });
   commandChars = prop<string[]>({
     default: [],

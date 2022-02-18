@@ -27,14 +27,14 @@
       </p>
       <p>
         * Github:
-        <a href="https://github.com/RuiChen0101" target="_blank"
-          >https://github.com/RuiChen0101
+        <a href="https://github.com/RuiChen0101" target="_blank">
+          https://github.com/RuiChen0101
         </a>
       </p>
       <p>
         * Linkedin:
-        <a href="https://www.linkedin.com/in/rui0101/" target="_blank"
-          >https://www.linkedin.com/in/rui0101/
+        <a href="https://www.linkedin.com/in/rui0101/" target="_blank">
+          https://www.linkedin.com/in/rui0101/
         </a>
       </p>
       <br />
@@ -54,8 +54,6 @@ export default class CmdInit extends Vue {}
 <style lang="scss" scoped>
 #cmd-init {
   .intro {
-    max-width: 1000px;
-    padding: 0px 12px;
     .cowsay {
       line-height: 24px;
     }
