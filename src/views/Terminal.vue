@@ -2,17 +2,17 @@
   <div id="terminal" ref="terminal">
     <CmdInit />
     <ComponentPresenter
-      v-for="(props, index) in this.commandStack"
+      v-for="(props, index) in this.commandExecutor.commandStack"
       :key="index"
       :props="props"
     />
     <CommandLineInput
-      :dirPath="this.currentDir"
+      :dirPath="this.commandExecutor.currentDir"
       :commandChars="this.keyboardHandler.getCommandChars()"
       :cursorPosition="this.keyboardHandler.getCursorPosition()"
     />
     <RecommendCommand
-      :recommends="this.recommendations"
+      :recommends="this.commandExecutor.recommendations"
       @onClick="this.onRecommendClick"
     />
   </div>
@@ -26,10 +26,8 @@ import RecommendCommand from "@/components/RecommendCommand.vue";
 import ComponentPresenter from "@/components/ComponentPresenter.vue";
 import CommandLineInput from "@/components/CommandLine/CommandLineInput.vue";
 
-import * as Injector from "@/utility/Injector";
 import KeyboardHandler from "@/utility/KeyboardHandler";
 import CommandExecutor from "@/utility/CommandExecutor";
-import FileSystem, { IFile } from "@/utility/FileSystem";
 
 @Options({
   components: {
@@ -40,15 +38,6 @@ import FileSystem, { IFile } from "@/utility/FileSystem";
   },
 })
 export default class Terminal extends Vue {
-  private commandStack: any[] = [
-    {
-      component: "CommandLine",
-      props: { dirPath: "/portfolio", command: "ls" },
-    },
-  ];
-  private recommendations: string[] = [];
-  private currentDir = "/portfolio";
-
   private keyboardHandler: KeyboardHandler = new KeyboardHandler();
   private commandExecutor: CommandExecutor = new CommandExecutor();
 
@@ -57,17 +46,9 @@ export default class Terminal extends Vue {
   }
 
   mounted(): void {
-    const dir: IFile = Injector.get<FileSystem>("FileSystem").getDir(
-      this.currentDir,
-      "./"
-    );
-    this.recommendations = dir.recommendation ?? [];
-    const result = this.commandExecutor.run("ls", this.currentDir);
-    this.commandStack.push({
-      component: result.component,
-      props: result.props,
-    });
-    (this.$refs.terminal as any).focus();
+    this.keyboardHandler.insertHistory("ls");
+    this.commandExecutor.initRecommendations();
+    this.commandExecutor.run("ls");
   }
 
   updated(): void {
@@ -82,52 +63,18 @@ export default class Terminal extends Vue {
   }
 
   private onRecommendClick(command: string): void {
-    this.commandStack.push({
-      component: "CommandLine",
-      props: {
-        dirPath: this.currentDir,
-        command: command,
-      },
-    });
     this.keyboardHandler.clear();
-    const result = this.commandExecutor.run(command, this.currentDir);
-    if (result.pwd !== undefined) this.currentDir = result.pwd;
-    if (result.recommendation !== undefined) {
-      this.recommendations = result.recommendation;
-    }
-    if (result.component !== undefined) {
-      this.commandStack.push({
-        component: result.component,
-        props: result.props,
-      });
-    }
+    this.keyboardHandler.insertHistory(command);
+    this.commandExecutor.run(command);
   }
 
   private onKeyDown(ev: KeyboardEvent): void {
-    if (ev.key === "Enter") {
-      const command: string = this.keyboardHandler.getCommand();
-      this.commandStack.push({
-        component: "CommandLine",
-        props: {
-          dirPath: this.currentDir,
-          command: command,
-        },
-      });
-      this.keyboardHandler.clear();
-      const result = this.commandExecutor.run(command, this.currentDir);
-      if (result.pwd !== undefined) this.currentDir = result.pwd;
-      if (result.recommendation !== undefined) {
-        this.recommendations = result.recommendation;
-      }
-      if (result.component !== undefined) {
-        this.commandStack.push({
-          component: result.component,
-          props: result.props,
-        });
-      }
-      return;
-    }
     this.keyboardHandler.dispatchEvent(ev);
+    if (this.keyboardHandler.hasCommand()) {
+      const command: string = this.keyboardHandler.getCommand();
+      this.keyboardHandler.clear();
+      this.commandExecutor.run(command);
+    }
   }
 }
 </script>

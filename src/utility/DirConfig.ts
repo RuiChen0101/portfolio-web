@@ -35,16 +35,16 @@ const fileRoot: IFile = {
                         'resume_zh.pdf': {
                             type: EFileType.FILE,
                             name: 'resume_zh.pdf',
-                            value: '/resume_zh',
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_zh.pdf?alt=media&token=f24b2341-26bc-4004-888b-bdefb17d0fa5',
                             date: 'Feb 18 20:24',
-                            size: '0'
+                            size: '20641805'
                         },
                         'resume_en.pdf': {
                             type: EFileType.FILE,
                             name: 'resume_en.pdf',
-                            value: '/resume_en',
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_en.pdf?alt=media&token=f4f9d95b-5c8e-48c1-8b01-bea89ae07f50',
                             date: 'Feb 18 20:24',
-                            size: '0'
+                            size: '20355759'
                         },
                     }
                 },
