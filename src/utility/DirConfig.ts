@@ -15,14 +15,28 @@ const fileRoot: IFile = {
             value: '/portfolio',
             date: 'Feb 18 20:24',
             size: '4096',
-            recommendation: ['./resume', 'cd ./snapshot', 'cd ./download'],
+            recommendation: ['./resume', './gallery', 'cd ./download'],
             subFiles: {
                 'resume': {
                     type: EFileType.EXECUTABLE,
                     date: 'Feb 18 20:24',
                     name: 'resume',
                     value: '/resume',
-                    size: '0'
+                    size: '230400'
+                },
+                'gallery': {
+                    type: EFileType.EXECUTABLE,
+                    name: 'gallery',
+                    value: '/gallery',
+                    date: 'Feb 18 20:24',
+                    size: '0',
+                },
+                'LICENSE': {
+                    type: EFileType.FILE,
+                    name: 'LICENSE',
+                    value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/LICENSE?alt=media&token=c89c5992-a33e-4265-9788-9dc0a89d3c3c',
+                    date: 'Feb 18 20:24',
+                    size: '1087'
                 },
                 'download': {
                     type: EFileType.DIR,
@@ -48,15 +62,6 @@ const fileRoot: IFile = {
                         },
                     }
                 },
-                'snapshot': {
-                    type: EFileType.DIR,
-                    name: 'snapshot',
-                    value: '/snapshot',
-                    date: 'Feb 18 20:24',
-                    size: '4096',
-                    recommendation: ['cd ../'],
-                    subFiles: {}
-                }
             }
         }
     }

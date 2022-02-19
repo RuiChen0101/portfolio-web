@@ -39,7 +39,7 @@
           >{{ file.value }}</a
         >
       </span>
-      <span class="file" v-if="file.type === EFileType.FILE">
+      <span class="plain-file" v-if="file.type === EFileType.FILE">
         {{
           `-rw-r--r-- 1 ruichen ruichen ${file.size.padStart(
             this.sizeLength,

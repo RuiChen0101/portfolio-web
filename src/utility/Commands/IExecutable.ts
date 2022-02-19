@@ -6,5 +6,5 @@ export interface IExecuteResult {
 }
 
 export default interface IExecutable {
-    execute(pwd: string, args: string[]): IExecuteResult;
+    execute(pwd: string, args: string[]): Promise<IExecuteResult>;
 }

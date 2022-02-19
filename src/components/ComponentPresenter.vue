@@ -7,8 +7,8 @@ import { markRaw } from "vue";
 import { prop, Vue } from "vue-class-component";
 
 import ListPrint from "./ListPrint.vue";
-import PlanTextPrint from "./PlanTextPrint.vue";
 import LongListPrint from "./LongListPrint.vue";
+import PlainTextPrint from "./PlainTextPrint.vue";
 import NavigationPrint from "./NavigationPrint.vue";
 import CommandLine from "./CommandLine/CommandLine.vue";
 
@@ -25,8 +25,8 @@ export default class ComponentPresenter extends Vue.with(
     switch (this.props.component) {
       case "CommandLine":
         return markRaw(CommandLine);
-      case "PlanTextPrint":
-        return markRaw(PlanTextPrint);
+      case "PlainTextPrint":
+        return markRaw(PlainTextPrint);
       case "ListPrint":
         return markRaw(ListPrint);
       case "LongListPrint":

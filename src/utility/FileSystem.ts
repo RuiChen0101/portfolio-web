@@ -16,7 +16,7 @@ interface IFile {
 
 class FileSystem {
     public getDir(pwd: string, path: string): IFile {
-        const result: IFile = this.getFile(this.constructPath(pwd, path));
+        const result: IFile = this.get(this.constructPath(pwd, path));
         if (result.type !== EFileType.DIR) {
             throw new FileTypeMismatchException(path);
         }
@@ -24,8 +24,16 @@ class FileSystem {
     }
 
     public getExecutable(pwd: string, path: string): IFile {
-        const result: IFile = this.getFile(this.constructPath(pwd, path));
+        const result: IFile = this.get(this.constructPath(pwd, path));
         if (result.type !== EFileType.EXECUTABLE) {
+            throw new FileTypeMismatchException(path);
+        }
+        return result;
+    }
+
+    public getFile(pwd: string, path: string): IFile {
+        const result: IFile = this.get(this.constructPath(pwd, path));
+        if (result.type !== EFileType.FILE) {
             throw new FileTypeMismatchException(path);
         }
         return result;
@@ -54,7 +62,7 @@ class FileSystem {
         return result;
     }
 
-    private getFile(path: string[]): IFile {
+    private get(path: string[]): IFile {
         let result: IFile = DirConfig;
         for (const dir of path) {
             if (result.subFiles === undefined || result.subFiles![dir] === undefined) {

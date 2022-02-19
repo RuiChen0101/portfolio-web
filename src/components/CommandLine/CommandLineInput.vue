@@ -46,9 +46,9 @@ export default class CommandLineInput extends Vue.with(CommandLineInputProps) {
     setInterval(this.onTick, 500);
   }
 
-  private onTick = (): void => {
+  private onTick(): void {
     this.showCursor = !this.showCursor;
-  };
+  }
 }
 </script>
 

@@ -7,11 +7,14 @@
       :props="props"
     />
     <CommandLineInput
+      v-if="!this.inExecuting"
       :dirPath="this.commandExecutor.currentDir"
       :commandChars="this.keyboardHandler.getCommandChars()"
       :cursorPosition="this.keyboardHandler.getCursorPosition()"
     />
+    <LoadingPrint v-else />
     <RecommendCommand
+      v-if="!this.inExecuting"
       :recommends="this.commandExecutor.recommendations"
       @onClick="this.onRecommendClick"
     />
@@ -22,6 +25,7 @@
 import { Options, Vue } from "vue-class-component";
 
 import CmdInit from "@/components/CmdInit.vue";
+import LoadingPrint from "@/components/LoadingPrint.vue";
 import RecommendCommand from "@/components/RecommendCommand.vue";
 import ComponentPresenter from "@/components/ComponentPresenter.vue";
 import CommandLineInput from "@/components/CommandLine/CommandLineInput.vue";
@@ -32,6 +36,7 @@ import CommandExecutor from "@/utility/CommandExecutor";
 @Options({
   components: {
     CmdInit,
+    LoadingPrint,
     RecommendCommand,
     CommandLineInput,
     ComponentPresenter,
@@ -40,6 +45,7 @@ import CommandExecutor from "@/utility/CommandExecutor";
 export default class Terminal extends Vue {
   private keyboardHandler: KeyboardHandler = new KeyboardHandler();
   private commandExecutor: CommandExecutor = new CommandExecutor();
+  private inExecuting = false;
 
   created(): void {
     window.addEventListener("keydown", this.onKeyDown);
@@ -62,18 +68,22 @@ export default class Terminal extends Vue {
     window.removeEventListener("keydown", this.onKeyDown);
   }
 
-  private onRecommendClick(command: string): void {
+  private async onRecommendClick(command: string): Promise<void> {
     this.keyboardHandler.clear();
     this.keyboardHandler.insertHistory(command);
-    this.commandExecutor.run(command);
+    this.inExecuting = true;
+    await this.commandExecutor.run(command);
+    this.inExecuting = false;
   }
 
-  private onKeyDown(ev: KeyboardEvent): void {
+  private async onKeyDown(ev: KeyboardEvent): Promise<void> {
     this.keyboardHandler.dispatchEvent(ev);
     if (this.keyboardHandler.hasCommand()) {
       const command: string = this.keyboardHandler.getCommand();
       this.keyboardHandler.clear();
-      this.commandExecutor.run(command);
+      this.inExecuting = true;
+      await this.commandExecutor.run(command);
+      this.inExecuting = false;
     }
   }
 }

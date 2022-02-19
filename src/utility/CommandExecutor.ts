@@ -1,8 +1,10 @@
 import List from "./Commands/List";
 import * as Injector from "./Injector";
 import ChangeDir from "./Commands/ChangeDir";
+import Concatenate from "./Commands/Concatenate";
 import FileSystem, { IFile } from "./FileSystem";
 import { IExecuteResult } from "./Commands/IExecutable";
+import SSHCopy from "./Commands/SSHCopy";
 
 class CommandExecutor {
     private _commandStack: any[] = [];
@@ -29,7 +31,7 @@ class CommandExecutor {
         this._recommendations = dir.recommendation ?? [];
     }
 
-    public run(command: string): void {
+    public async run(command: string): Promise<void> {
         this.commandStack.push({
             component: "CommandLine",
             props: {
@@ -37,27 +39,34 @@ class CommandExecutor {
                 command: command,
             },
         });
-        this._run(command, this._currentDir);
+        return this._run(command, this._currentDir);
     }
 
-    private _run(command: string, pwd: string): void {
+    private async _run(command: string, pwd: string): Promise<void> {
         if (command === '') return;
         const args: string[] = command.split(' ');
         try {
             const command: string = args[0];
             if (command === 'cd') {
                 const cd = new ChangeDir();
-                this.appendResult(cd.execute(pwd, args));
+                this.appendResult(await cd.execute(pwd, args));
                 return;
             } else if (command === 'ls') {
                 const ls = new List();
-                this.appendResult(ls.execute(pwd, args));
+                this.appendResult(await ls.execute(pwd, args));
                 return;
             } else if (command === 'll') {
                 const ls = new List();
                 args.push('-l');
-                this.appendResult(ls.execute(pwd, args));
+                this.appendResult(await ls.execute(pwd, args));
                 return;
+            } else if (command === 'cat') {
+                const cat = new Concatenate();
+                this.appendResult(await cat.execute(pwd, args));
+                return;
+            } else if (command === 'scp') {
+                const scp = new SSHCopy();
+                this.appendResult(await scp.execute(pwd, args));
             } else if (command === 'clear') {
                 this._commandStack = [];
                 return;
@@ -75,14 +84,14 @@ class CommandExecutor {
                 console.log(err.message);
             }
             this.appendResult({
-                component: 'PlanTextPrint',
+                component: 'PlainTextPrint',
                 props: {
                     text: `${command}: command not found`
                 }
             });
         } catch (err: any) {
             this.appendResult({
-                component: 'PlanTextPrint',
+                component: 'PlainTextPrint',
                 props: {
                     text: `${command}: ${err.message}`
                 }

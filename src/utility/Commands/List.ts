@@ -3,7 +3,7 @@ import * as Injector from "../Injector";
 import FileSystem, { IFile } from "../FileSystem";
 
 class List implements IExecutable {
-    public execute(pwd: string, args: string[]): IExecuteResult {
+    public async execute(pwd: string, args: string[]): Promise<IExecuteResult> {
         let path: string | undefined = undefined;
         let isLong = false;
         for (const arg of args) {

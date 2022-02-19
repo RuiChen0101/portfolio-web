@@ -7,13 +7,13 @@
 <script lang="ts">
 import { prop, Vue } from "vue-class-component";
 
-class PlanTextPrintProps {
+class PlainTextPrintProps {
   text = prop<string>({
     default: "",
   });
 }
 
-export default class PlanTextPrint extends Vue.with(PlanTextPrintProps) {
+export default class PlainTextPrint extends Vue.with(PlainTextPrintProps) {
   private lines: string[] = [];
 
   created(): void {

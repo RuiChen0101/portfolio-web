@@ -3,7 +3,7 @@ import FileSystem, { IFile } from "../FileSystem";
 import IExecutable, { IExecuteResult } from "./IExecutable";
 
 class ChangeDir implements IExecutable {
-    public execute(pwd: string, args: string[]): IExecuteResult {
+    public async execute(pwd: string, args: string[]): Promise<IExecuteResult> {
         const path: string | undefined = args[1];
         if (path === undefined) return {};
         const fileSystem = Injector.get<FileSystem>('FileSystem');
@@ -13,7 +13,7 @@ class ChangeDir implements IExecutable {
             return { pwd: newPath, recommendation: dir.recommendation ?? [] };
         } catch (err: any) {
             return {
-                component: 'PlanTextPrint',
+                component: 'PlainTextPrint',
                 props: {
                     text: `cd: ${path}: No such file or directory`
                 }
