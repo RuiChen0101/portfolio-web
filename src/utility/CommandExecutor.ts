@@ -1,6 +1,8 @@
-import ChangeDir from "./Commands/ChangeDir";
-import { IExecuteResult } from "./Commands/IExecutable";
 import List from "./Commands/List";
+import * as Injector from "./Injector";
+import ChangeDir from "./Commands/ChangeDir";
+import FileSystem, { IFile } from "./FileSystem";
+import { IExecuteResult } from "./Commands/IExecutable";
 
 class CommandExecutor {
     public run(command: string, pwd: string): IExecuteResult {
@@ -18,12 +20,23 @@ class CommandExecutor {
                 const ls = new List();
                 args.push('-l');
                 return ls.execute(pwd, args);
-            } else {
+            }
+            const fileSystem: FileSystem = Injector.get<FileSystem>('FileSystem');
+            try {
+                const file: IFile = fileSystem.getExecutable(pwd, command);
                 return {
-                    component: 'PlanTextPrint',
+                    component: 'NavigationPrint',
                     props: {
-                        text: `${command}: command not found`
+                        to: file.value
                     }
+                }
+            } catch (err: any) {
+                console.log(err.message);
+            }
+            return {
+                component: 'PlanTextPrint',
+                props: {
+                    text: `${command}: command not found`
                 }
             }
         } catch (err: any) {

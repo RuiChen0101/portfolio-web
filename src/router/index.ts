@@ -7,6 +7,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Terminal',
         component: Terminal
     },
+    {
+        path: '/resume',
+        name: 'Resume',
+        component: () => import('@/views/Resume.vue')
+    }
 ]
 
 const router = createRouter({

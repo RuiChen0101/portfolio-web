@@ -9,6 +9,7 @@ interface IFile {
     name: string,
     date: string,
     size: string,
+    recommendation?: string[],
     value?: string,
     subFiles?: { [key: string]: IFile }
 }
@@ -30,13 +31,7 @@ class FileSystem {
         return result;
     }
 
-    public isDirExist(pwd: string, path: string): string {
-        const constructedPath: string[] = this.constructPath(pwd, path);
-        this.getFile(constructedPath);
-        return '/' + constructedPath.join('/');
-    }
-
-    private constructPath(pwd: string, path: string): string[] {
+    public constructPath(pwd: string, path: string): string[] {
         const paths: string[] = path.split('/').filter((item) => {
             return item !== '';
         });

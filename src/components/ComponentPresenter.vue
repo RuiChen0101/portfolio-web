@@ -9,6 +9,7 @@ import { prop, Vue } from "vue-class-component";
 import ListPrint from "./ListPrint.vue";
 import PlanTextPrint from "./PlanTextPrint.vue";
 import LongListPrint from "./LongListPrint.vue";
+import NavigationPrint from "./NavigationPrint.vue";
 import CommandLine from "./CommandLine/CommandLine.vue";
 
 class ComponentPresenterProps {
@@ -30,6 +31,8 @@ export default class ComponentPresenter extends Vue.with(
         return markRaw(ListPrint);
       case "LongListPrint":
         return markRaw(LongListPrint);
+      case "NavigationPrint":
+        return markRaw(NavigationPrint);
       default:
         return undefined;
     }

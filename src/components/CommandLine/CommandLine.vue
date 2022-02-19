@@ -1,5 +1,5 @@
 <template>
-  <div id="command-line">
+  <div id="command-line" class="d-flex flex-wrap">
     <span class="machine-name">ruichen@Portfolio</span>
     <span>:</span>
     <span class="dir">{{ this.dirPath }}</span>

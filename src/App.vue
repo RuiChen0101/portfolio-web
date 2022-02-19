@@ -16,8 +16,21 @@ body {
   text-align: center;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
 p {
   margin: 0px !important;
+}
+
+a,
+button {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 768px) {

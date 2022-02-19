@@ -1,5 +1,5 @@
 <template>
-  <div id="list-print" class="d-flex">
+  <div id="list-print" class="d-flex flex-wrap">
     <div class="file" v-for="(file, index) of this.files" :key="index">
       <span class="executable" v-if="file.type === EFileType.EXECUTABLE"
         >{{ file.name }}
@@ -46,7 +46,7 @@ export default class ListPrint extends Vue.with(ListPrintProps) {
 <style lang="scss" scoped>
 #list-print {
   .file {
-    min-width: 150px;
+    margin-right: 24px;
     .executable {
       color: #16c60c;
     }

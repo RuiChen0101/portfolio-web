@@ -19,12 +19,21 @@ class KeyboardHandler {
             case 'ArrowRight':
                 this.cursorPosition = Math.min(this.command.length, this.cursorPosition + 1);
                 return;
+            case 'Home':
+                this.cursorPosition = 0;
+                return;
+            case 'End':
+                this.cursorPosition = this.command.length;
+                return;
+            case 'Tab':
+                event.preventDefault();
+                return;
             case ' ':
                 this.command.splice(this.cursorPosition, 0, '\xa0');
                 this.cursorPosition++;
                 return;
         }
-        if (RegExp(/^[a-zA-Z0-9/.-]$/).test(key)) {
+        if (RegExp(/^[a-zA-Z0-9/.-_:"'=]$/).test(key)) {
             this.command.splice(this.cursorPosition, 0, key);
             this.cursorPosition++;
         }
@@ -40,6 +49,10 @@ class KeyboardHandler {
     }
 
     public getCursorPosition(): number { return this.cursorPosition; }
+
+    // private appendText(text: string): void {
+
+    // }
 }
 
 export default KeyboardHandler;

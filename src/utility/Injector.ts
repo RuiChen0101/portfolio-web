@@ -1,11 +1,9 @@
-import CommandExecutor from "./CommandExecutor";
 import FileSystem from "./FileSystem";
 
 
 // simple dependency injector for easy test
 const instancesPool: { [key: string]: any } = {
     FileSystem: new FileSystem(),
-    CommandExecutor: new CommandExecutor()
 }
 
 const lazyInstancesFactory: { [key: string]: () => any } = {}
@@ -40,7 +38,7 @@ export const setLazy = (name: string, instance: () => any): void => {
     lazyInstancesFactory[name] = instance;
 }
 
-export const setFactory = <T>(name: string, instance: () => any): void => {
+export const setFactory = (name: string, instance: () => any): void => {
     objectFactory[name] = instance;
 }
 

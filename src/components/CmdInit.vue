@@ -16,14 +16,15 @@
       </p>
       <br />
       <p>
-        I am a Fullstack Developer that have 5+ years experiences in software
+        I am a Full-Stack Developer that have 5+ years experiences in software
         development, design pattern and software testing. Currently working at
-        TigerMaster as Supervisor of R&D Department
+        Federal IntelliGence Co., Ltd. as Supervisor of R&D Department,
+        Maintaining and developing product of company - TimerMaster.
       </p>
       <br />
       <p>
-        For more information, you can use the link down below, or use
-        "./resume_zh", "./resume_en" to access my resume
+        For more information, you can use the link down below, or use "./resume"
+        to access my resume
       </p>
       <p>
         * Github:
@@ -59,6 +60,13 @@ export default class CmdInit extends Vue {}
     }
     .comment-out {
       color: #6b9955;
+    }
+
+    a {
+      color: #61d6d6;
+      &:hover {
+        color: #61d6d6bb;
+      }
     }
   }
 }
