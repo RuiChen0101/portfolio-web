@@ -37,7 +37,7 @@ const fileRoot: IFile = {
                     value: '/gallery',
                     date: 'Feb 20 14:20',
                     size: '4096',
-                    recommendation: ['cd ../', 'cat ./tigermaster.jpg', 'cat ./cincinnati.jpg', 'cat ./line.jpg', 'cat ./codingape.jpg'],
+                    recommendation: ['cd ../', 'cat ./tigermaster.jpg', 'cat ./scam.jpg', 'cat ./cincinnati.jpg', 'cat ./line.jpg', 'cat ./codingape.jpg'],
                     subFiles: {
                         'tigermaster.jpg': {
                             type: EFileType.IMAGE,
@@ -46,6 +46,14 @@ const fileRoot: IFile = {
                             value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/gallery%2Ftigermaster.jpg?alt=media&token=3205bf10-6197-4bd6-a6bb-ae82a0acf525',
                             date: 'Feb 20 14:48',
                             size: '76469'
+                        },
+                        'scam.jpg': {
+                            type: EFileType.IMAGE,
+                            name: 'scam.jpg',
+                            description: 'Smart camera with object detection capability base on Google Edge TPU.',
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/gallery%2Fscam.jpg?alt=media&token=9fa06414-cd37-4c22-94a2-a04f1195df07',
+                            date: 'Feb 20 23:16',
+                            size: '36099'
                         },
                         'cincinnati.jpg': {
                             type: EFileType.IMAGE,
@@ -70,7 +78,7 @@ const fileRoot: IFile = {
                             value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/gallery%2Fcodingape.jpg?alt=media&token=622ba8f4-61e7-4b65-b002-187d1be09c21',
                             date: 'Feb 20 14:48',
                             size: '73258'
-                        },
+                        }
                     }
                 },
                 'download': {
@@ -84,16 +92,16 @@ const fileRoot: IFile = {
                         'resume_zh.pdf': {
                             type: EFileType.FILE,
                             name: 'resume_zh.pdf',
-                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_zh.pdf?alt=media&token=f24b2341-26bc-4004-888b-bdefb17d0fa5',
-                            date: 'Feb 19 20:25',
-                            size: '20641805'
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_zh.pdf?alt=media&token=257a2cd6-cbd7-4cb5-9a4c-cf7986be48ac',
+                            date: 'Feb 20 23:14',
+                            size: '20539036'
                         },
                         'resume_en.pdf': {
                             type: EFileType.FILE,
                             name: 'resume_en.pdf',
-                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_en.pdf?alt=media&token=f4f9d95b-5c8e-48c1-8b01-bea89ae07f50',
-                            date: 'Feb 19 20:25',
-                            size: '20355759'
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_en.pdf?alt=media&token=9a799a32-7abf-4c90-acc1-3627b647e537',
+                            date: 'Feb 20 23:14',
+                            size: '20252442'
                         },
                     }
                 },

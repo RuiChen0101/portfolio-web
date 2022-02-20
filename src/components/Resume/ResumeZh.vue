@@ -51,10 +51,10 @@
         <p>------------</p>
         <p>·&nbsp;<span class="highlight-yellow">資訊工程 碩士</span></p>
         <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
-        <p>&nbsp;&nbsp;└──<span class="grey-out">2021~2022</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2022</span></p>
         <p>·&nbsp;<span class="highlight-yellow">資訊工程 學士</span></p>
         <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
-        <p>&nbsp;&nbsp;└──<span class="grey-out">2017~2021</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2017~2021</span></p>
       </div>
       <div class="skills col-12 col-md-6">
         <h2>技能</h2>
@@ -97,7 +97,7 @@
       <p>---------------------------------</p>
       <div class="experience">
         <p>
-          ·&nbsp;2020/11 - NOW |
+          ·&nbsp;<span class="highlight-grey">2020/11 - NOW</span> |
           <span class="highlight-yellow">研發部 課長</span>·飛達智能股份有限公司
         </p>
         <p>
@@ -117,7 +117,7 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2020/1 - 2020/9 |
+          ·&nbsp;<span class="highlight-grey">2020/1 - 2020/9</span> |
           <span class="highlight-yellow">實習生</span>·工業研究院
           產學研工程人才實務能力發展基地
         </p>
@@ -141,7 +141,7 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2019/7 ~ 2019/12 |
+          ·&nbsp;<span class="highlight-grey">2019/7 ~ 2019/12</span> |
           <span class="highlight-yellow">產學合作專案</span>·美溪電機線割機
           控制軟體作業系統移植
         </p>
@@ -157,7 +157,7 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2018/1 - 2020/7 |
+          ·&nbsp;<span class="highlight-grey">2018/1 - 2020/7</span> |
           <span class="highlight-yellow">轉播與IT組組長</span>·國立臺北科技大學
           電子競技社
         </p>
@@ -172,7 +172,7 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2017/8 - 2019/4 |
+          ·&nbsp;<span class="highlight-grey">2017/8 - 2019/4</span> |
           <span class="highlight-yellow">課程設計/講師</span>·CodingAPE
           猿創力程式設計學校
         </p>
@@ -214,6 +214,10 @@ export default class ResumeZh extends Vue {}
     color: #16c60c;
   }
 
+  .highlight-grey {
+    color: #ccccccbb;
+  }
+
   .intro {
     border-bottom: 1px solid #cccccc;
     padding: 12px 0px 24px 0px;
@@ -247,9 +251,6 @@ export default class ResumeZh extends Vue {}
     border-bottom: 1px solid #cccccc;
     .education {
       padding: 12px;
-      .grey-out {
-        color: #ccccccbb;
-      }
     }
     .skills {
       padding: 12px;

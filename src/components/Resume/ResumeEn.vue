@@ -57,14 +57,14 @@
           >
         </p>
         <p>&nbsp;&nbsp;├──National Taipei University of Technology</p>
-        <p>&nbsp;&nbsp;└──<span class="grey-out">2021~2022</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2022</span></p>
         <p>
           ·&nbsp;<span class="highlight-yellow"
             >Bachelor of Computer Science</span
           >
         </p>
         <p>&nbsp;&nbsp;├──National Taipei University of Technology</p>
-        <p>&nbsp;&nbsp;└──<span class="grey-out">2017~2021</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2017~2021</span></p>
       </div>
       <div class="skills col-12 col-md-6">
         <h2>Skills</h2>
@@ -107,7 +107,8 @@
       <p>---------------------------------</p>
       <div class="experience">
         <p>
-          ·&nbsp;2020/11 - NOW | Federal IntelliGence Co., Ltd.,
+          ·&nbsp;<span class="highlight-grey">2020/11 - NOW</span> | Federal
+          IntelliGence Co., Ltd.,
           <span class="highlight-yellow">Supervisor of R&D Department</span>
         </p>
         <p>
@@ -135,7 +136,8 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2020/1 - 2020/9 | Industrial Technology Research Institute,
+          ·&nbsp;<span class="highlight-grey">2020/1 - 2020/9</span> |
+          Industrial Technology Research Institute,
           <span class="highlight-yellow">iDBET Intern</span>
         </p>
         <p>
@@ -163,7 +165,8 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2019/7 ~ 2019/12 | MAX SEE INDUSTRY CO., LTD.,
+          ·&nbsp;<span class="highlight-grey">2019/7 ~ 2019/12</span> | MAX SEE
+          INDUSTRY CO., LTD.,
           <span class="highlight-yellow">Industry-academia Collaboration</span>
         </p>
         <p>&nbsp;&nbsp;├──Add Russian support to existing system.</p>
@@ -179,8 +182,8 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2018/1 - 2020/7 | National Taipei University of Technology
-          e-Sports Club,
+          ·&nbsp;<span class="highlight-grey">2018/1 - 2020/7</span> | National
+          Taipei University of Technology e-Sports Club,
           <span class="highlight-yellow"
             >Director of Broadcast and IT Department</span
           >
@@ -201,7 +204,8 @@
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;2017/8 - 2019/4 | CodingAPE School,
+          ·&nbsp;<span class="highlight-grey">2017/8 - 2019/4</span> | CodingAPE
+          School,
           <span class="highlight-yellow">Course Design/Teacher</span>
         </p>
         <p>
@@ -246,6 +250,10 @@ export default class ResumeEn extends Vue {}
     color: #16c60c;
   }
 
+  .highlight-grey {
+    color: #ccccccbb;
+  }
+
   .intro {
     border-bottom: 1px solid #cccccc;
     padding: 12px 0px 24px 0px;
@@ -279,9 +287,6 @@ export default class ResumeEn extends Vue {}
     border-bottom: 1px solid #cccccc;
     .education {
       padding: 12px;
-      .grey-out {
-        color: #ccccccbb;
-      }
     }
     .skills {
       padding: 12px;

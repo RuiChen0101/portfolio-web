@@ -3,7 +3,7 @@
     <p>
       {{ this.text }}
     </p>
-    <img :src="this.url" alt="" />
+    <img :src="this.url" alt="" @load="this.loadComplete" />
   </div>
 </template>
 
@@ -17,7 +17,14 @@ class ImagePrintProps {
   url = prop<string>({});
 }
 
-export default class ImagePrint extends Vue.with(ImagePrintProps) {}
+export default class ImagePrint extends Vue.with(ImagePrintProps) {
+  private loadComplete(): void {
+    window.scrollTo(
+      0,
+      document.body.scrollHeight || document.documentElement.scrollHeight
+    );
+  }
+}
 </script>
 
 <style lang="scss" scoped>
