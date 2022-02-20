@@ -1,20 +1,28 @@
+import * as Injector from "./Injector";
+import FileSystem, { IFile } from "./FileSystem";
 
 class KeyboardHandler {
     private history: string[] = [];
     private command: string[] = [];
     private cursorPosition = 0;
     private historyCursor = 0;
+    private autocompleteCandidate?: string[] = undefined;
+    private autocompleteIndex = 0;
     private commandComplete = false;
 
-    public dispatchEvent(event: KeyboardEvent): void {
+    public dispatchEvent(pwd: string, event: KeyboardEvent): void {
         const key: string = event.key;
         switch (key) {
             case 'Backspace':
                 this.command.splice(this.cursorPosition - 1, 1);
                 this.cursorPosition = Math.max(0, this.cursorPosition - 1);
+                this.autocompleteCandidate = undefined;
+                this.autocompleteIndex = 0;
                 return;
             case 'Delete':
                 this.command.splice(this.cursorPosition, 1);
+                this.autocompleteCandidate = undefined;
+                this.autocompleteIndex = 0;
                 return;
             case 'ArrowLeft':
                 this.cursorPosition = Math.max(0, this.cursorPosition - 1);
@@ -30,16 +38,17 @@ class KeyboardHandler {
                 return;
             case 'Tab':
                 event.preventDefault();
+                this.autocomplete(pwd, this.getCommand());
                 return;
             case 'ArrowUp':
                 event.preventDefault();
                 this.historyCursor = Math.min(this.history.length, this.historyCursor + 1);
-                this.loadText(this.history[this.historyCursor - 1]);
+                this.loadHistory(this.history[this.historyCursor - 1]);
                 return;
             case 'ArrowDown':
                 event.preventDefault();
                 this.historyCursor = Math.max(0, this.historyCursor - 1);
-                this.loadText(this.history[this.historyCursor - 1]);
+                this.loadHistory(this.history[this.historyCursor - 1]);
                 return;
             case 'Enter':
                 event.preventDefault();
@@ -55,6 +64,8 @@ class KeyboardHandler {
             this.command.splice(this.cursorPosition, 0, key);
             this.cursorPosition++;
             this.historyCursor = 0;
+            this.autocompleteCandidate = undefined;
+            this.autocompleteIndex = 0;
         }
     }
 
@@ -74,17 +85,65 @@ class KeyboardHandler {
         this.command = [];
         this.cursorPosition = 0;
         this.historyCursor = 0;
+        this.autocompleteCandidate = undefined;
+        this.autocompleteIndex = 0;
         this.commandComplete = false;
     }
 
     public getCursorPosition(): number { return this.cursorPosition; }
 
-    private loadText(history: string): void {
+    private autocomplete(pwd: string, command: string): void {
+        const args: string[] = command.split(' ');
+        const last: string | undefined = args.pop();
+        if (last === undefined || !(last!.startsWith('.') || last!.startsWith('/'))) return;
+        const path: string[] = last.split('/');
+        if (last === '.' || last === '..') path.push('');
+        console.log(path);
+        const partialDir = path.pop();
+        if (this.autocompleteCandidate !== undefined) {
+            console.log(this.autocompleteCandidate);
+            this.autocompleteIndex = (this.autocompleteIndex + 1) % this.autocompleteCandidate.length;
+            path.push(this.autocompleteCandidate[this.autocompleteIndex]);
+            args.push(path.join(('/')));
+            this.loadAutocomplete(args.join(' '));
+            return;
+        }
+        console.log(path);
+        const findDir = last === '/' ? '/' : path.join('/');
+        console.log(findDir);
+        try {
+            const dir: IFile = Injector.get<FileSystem>('FileSystem').getDir(pwd, findDir);
+            const keys: string[] = Object.keys(dir.subFiles ?? {}).filter((item) => RegExp(`^${partialDir}`).test(item));
+            if (keys.length === 0) return;
+            this.autocompleteCandidate = keys;
+            path.push(this.autocompleteCandidate[this.autocompleteIndex]);
+            args.push(path.join(('/')));
+            this.loadAutocomplete(args.join(' '));
+            return;
+        } catch (err) {
+            return;
+        }
+    }
+
+    private loadHistory(history: string): void {
+        this.command = [];
+        this.cursorPosition = 0;
+        this.autocompleteCandidate = undefined;
+        this.autocompleteIndex = 0;
+        this.commandComplete = false;
+        this.loadText(history);
+    }
+
+    private loadAutocomplete(autocomplete: string): void {
         this.command = [];
         this.cursorPosition = 0;
         this.commandComplete = false;
-        if (history === undefined || history === '') return;
-        for (const ch of history) {
+        this.loadText(autocomplete);
+    }
+
+    private loadText(text: string): void {
+        if (text === undefined || text === '') return;
+        for (const ch of text) {
             if (ch === ' ') {
                 this.command.push('\xa0');
                 continue;

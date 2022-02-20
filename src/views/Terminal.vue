@@ -47,11 +47,8 @@ export default class Terminal extends Vue {
   private commandExecutor: CommandExecutor = new CommandExecutor();
   private inExecuting = false;
 
-  created(): void {
-    window.addEventListener("keydown", this.onKeyDown);
-  }
-
   mounted(): void {
+    window.addEventListener("keydown", this.onKeyDown);
     this.keyboardHandler.insertHistory("ls");
     this.commandExecutor.initRecommendations();
     this.commandExecutor.run("ls");
@@ -64,7 +61,7 @@ export default class Terminal extends Vue {
     );
   }
 
-  destroyed(): void {
+  unmounted(): void {
     window.removeEventListener("keydown", this.onKeyDown);
   }
 
@@ -77,7 +74,7 @@ export default class Terminal extends Vue {
   }
 
   private async onKeyDown(ev: KeyboardEvent): Promise<void> {
-    this.keyboardHandler.dispatchEvent(ev);
+    this.keyboardHandler.dispatchEvent(this.commandExecutor.currentDir, ev);
     if (this.keyboardHandler.hasCommand()) {
       const command: string = this.keyboardHandler.getCommand();
       this.keyboardHandler.clear();

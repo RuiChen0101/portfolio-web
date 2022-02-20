@@ -67,6 +67,7 @@ class CommandExecutor {
             } else if (command === 'scp') {
                 const scp = new SSHCopy();
                 this.appendResult(await scp.execute(pwd, args));
+                return;
             } else if (command === 'clear') {
                 this._commandStack = [];
                 return;

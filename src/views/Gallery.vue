@@ -1,26 +1,17 @@
 <template>
-  <div id="resume">
+  <div id="gallery">
     <component :is="this.resumeLang[this.currentResumeLang]" />
     <div id="control-panel">
-      <button @click="this.onChangeLanguage()">
-        F2<span>Language&nbsp;&nbsp;</span>
-      </button>
+      <button>F2<span>Language&nbsp;&nbsp;</span></button>
       <button @click="this.goBack()">ESC<span>Quit&nbsp;&nbsp;</span></button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { markRaw } from "vue";
 import { Vue } from "vue-class-component";
 
-import ResumeZh from "@/components/Resume/ResumeZh.vue";
-import ResumeEn from "@/components/Resume/ResumeEn.vue";
-
-export default class Resume extends Vue {
-  private resumeLang: any[] = [markRaw(ResumeEn), markRaw(ResumeZh)];
-  private currentResumeLang = 0;
-
+export default class Gallery extends Vue {
   mounted(): void {
     window.addEventListener("keydown", this.onKeyDown);
   }
@@ -32,17 +23,11 @@ export default class Resume extends Vue {
   private onKeyDown(ev: KeyboardEvent): void {
     if (ev.key === "Escape") {
       this.goBack();
-    } else if (ev.key === "F2") {
-      this.onChangeLanguage();
     }
   }
 
   private goBack(): void {
     this.$router.go(-1);
-  }
-
-  private onChangeLanguage(): void {
-    this.currentResumeLang = (this.currentResumeLang + 1) % 2;
   }
 }
 </script>
