@@ -2,7 +2,8 @@ enum EFileType {
     EXECUTABLE,
     LINK,
     DIR,
-    FILE
+    FILE,
+    IMAGE
 }
 
 export default EFileType;

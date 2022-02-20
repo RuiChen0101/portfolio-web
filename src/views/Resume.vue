@@ -22,6 +22,7 @@ export default class Resume extends Vue {
   private currentResumeLang = 0;
 
   mounted(): void {
+    window.scrollTo(0, 0);
     window.addEventListener("keydown", this.onKeyDown);
   }
 

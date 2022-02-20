@@ -10,6 +10,7 @@ interface IFile {
     date: string,
     size: string,
     recommendation?: string[],
+    description?: string,
     value?: string,
     subFiles?: { [key: string]: IFile }
 }
@@ -33,7 +34,7 @@ class FileSystem {
 
     public getFile(pwd: string, path: string): IFile {
         const result: IFile = this.get(this.constructPath(pwd, path));
-        if (result.type !== EFileType.FILE) {
+        if (result.type !== EFileType.FILE && result.type !== EFileType.IMAGE) {
             throw new FileTypeMismatchException(path);
         }
         return result;

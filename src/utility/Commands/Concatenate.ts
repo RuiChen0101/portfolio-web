@@ -1,5 +1,5 @@
 import * as Injector from "../Injector";
-import FileSystem, { IFile } from "../FileSystem";
+import FileSystem, { EFileType, IFile } from "../FileSystem";
 import IExecutable, { IExecuteResult } from "./IExecutable";
 import FileTypeMismatchException from "@/exception/FileTypeMismatchException";
 
@@ -19,12 +19,24 @@ class Concatenate implements IExecutable {
                 }
             }
             const res = await fetch(file.value!);
-            return {
-                component: 'PlainTextPrint',
-                props: {
-                    text: await res.text()
+            if (file.type === EFileType.FILE) {
+                return {
+                    component: 'PlainTextPrint',
+                    props: {
+                        text: await res.text()
+                    }
+                }
+            } else {
+                const image = URL.createObjectURL(await res.blob());
+                return {
+                    component: 'ImagePrint',
+                    props: {
+                        text: file.description ?? '',
+                        url: image
+                    }
                 }
             }
+
         } catch (err: any) {
             if (err instanceof FileTypeMismatchException) {
                 return {

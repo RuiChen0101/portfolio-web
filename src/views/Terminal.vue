@@ -18,6 +18,9 @@
       :recommends="this.commandExecutor.recommendations"
       @onClick="this.onRecommendClick"
     />
+    <div class="dummyInput">
+      <div><span>Command: </span> <input ref="dummyInput" type="text" /></div>
+    </div>
   </div>
 </template>
 
@@ -67,6 +70,7 @@ export default class Terminal extends Vue {
 
   private async onRecommendClick(command: string): Promise<void> {
     this.keyboardHandler.clear();
+    (this.$refs.dummyInput as any).value = "";
     this.keyboardHandler.insertHistory(command);
     this.inExecuting = true;
     await this.commandExecutor.run(command);
@@ -78,6 +82,7 @@ export default class Terminal extends Vue {
     if (this.keyboardHandler.hasCommand()) {
       const command: string = this.keyboardHandler.getCommand();
       this.keyboardHandler.clear();
+      (this.$refs.dummyInput as any).value = "";
       this.inExecuting = true;
       await this.commandExecutor.run(command);
       this.inExecuting = false;
@@ -91,6 +96,39 @@ export default class Terminal extends Vue {
   width: 100%;
   max-width: 1400px;
   padding: 8px 8px;
+
+  .dummyInput {
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: 8px;
+    display: none;
+    input {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #cccccc;
+      &:focus,
+      &:focus-visible {
+        border: none;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #terminal {
+    padding-bottom: 60px;
+    .dummyInput {
+      display: block;
+    }
+  }
 }
 </style>
 

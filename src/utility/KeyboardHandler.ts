@@ -98,19 +98,15 @@ class KeyboardHandler {
         if (last === undefined || !(last!.startsWith('.') || last!.startsWith('/'))) return;
         const path: string[] = last.split('/');
         if (last === '.' || last === '..') path.push('');
-        console.log(path);
         const partialDir = path.pop();
         if (this.autocompleteCandidate !== undefined) {
-            console.log(this.autocompleteCandidate);
             this.autocompleteIndex = (this.autocompleteIndex + 1) % this.autocompleteCandidate.length;
             path.push(this.autocompleteCandidate[this.autocompleteIndex]);
             args.push(path.join(('/')));
             this.loadAutocomplete(args.join(' '));
             return;
         }
-        console.log(path);
         const findDir = last === '/' ? '/' : path.join('/');
-        console.log(findDir);
         try {
             const dir: IFile = Injector.get<FileSystem>('FileSystem').getDir(pwd, findDir);
             const keys: string[] = Object.keys(dir.subFiles ?? {}).filter((item) => RegExp(`^${partialDir}`).test(item));

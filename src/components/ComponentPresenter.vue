@@ -7,6 +7,7 @@ import { markRaw } from "vue";
 import { prop, Vue } from "vue-class-component";
 
 import ListPrint from "./ListPrint.vue";
+import ImagePrint from "./ImagePrint.vue";
 import LongListPrint from "./LongListPrint.vue";
 import PlainTextPrint from "./PlainTextPrint.vue";
 import NavigationPrint from "./NavigationPrint.vue";
@@ -33,6 +34,8 @@ export default class ComponentPresenter extends Vue.with(
         return markRaw(LongListPrint);
       case "NavigationPrint":
         return markRaw(NavigationPrint);
+      case "ImagePrint":
+        return markRaw(ImagePrint);
       default:
         return undefined;
     }

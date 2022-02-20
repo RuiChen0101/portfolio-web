@@ -15,7 +15,10 @@
         rel="noopener noreferrer"
         >{{ file.name }}</a
       >
-      <span class="plain-file" v-if="file.type === EFileType.FILE">
+      <span
+        class="plain-file"
+        v-if="file.type === EFileType.FILE || file.type === EFileType.IMAGE"
+      >
         {{ file.name }}
       </span>
     </div>
