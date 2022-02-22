@@ -70,6 +70,7 @@ class KeyboardHandler {
     }
 
     public insertHistory(history: string): void {
+        if (history === undefined || history === '') return;
         this.history.unshift(history);
     }
 
