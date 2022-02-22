@@ -4,7 +4,7 @@
 
 <style lang="scss">
 :root {
-  --bs-body-font-family: Consolas, Avenir, Helvetica, Arial, sans-serif !important;
+  --bs-body-font-family: Consolas, Monaco, Avenir, Helvetica, Arial, sans-serif !important;
   --bs-body-bg: #000000 !important;
   --bs-body-color: #cccccc !important;
   --bs-body-font-size: 24px !important;
