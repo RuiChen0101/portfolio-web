@@ -68,6 +68,14 @@ class CommandExecutor {
                 const scp = new SSHCopy();
                 this.appendResult(await scp.execute(pwd, args));
                 return;
+            } else if (command === 'pwd') {
+                this.appendResult({
+                    component: 'PlainTextPrint',
+                    props: {
+                        text: pwd
+                    }
+                });
+                return;
             } else if (command === 'clear') {
                 this._commandStack = [];
                 return;

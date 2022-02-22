@@ -95,6 +95,7 @@ class KeyboardHandler {
     private autocomplete(pwd: string, command: string): void {
         const args: string[] = command.split(' ');
         const last: string | undefined = args.pop();
+        console.log(last === undefined);
         if (last === undefined || !(last!.startsWith('.') || last!.startsWith('/'))) return;
         const path: string[] = last.split('/');
         if (last === '.' || last === '..') path.push('');
