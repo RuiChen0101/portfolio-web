@@ -13,6 +13,7 @@
 <script lang="ts">
 import { markRaw } from "vue";
 import { Vue } from "vue-class-component";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 import ResumeZh from "@/components/Resume/ResumeZh.vue";
 import ResumeEn from "@/components/Resume/ResumeEn.vue";
@@ -22,6 +23,11 @@ export default class Resume extends Vue {
   private currentResumeLang = 0;
 
   mounted(): void {
+    const analytics = getAnalytics();
+    logEvent(analytics, "screen_view", {
+      firebase_screen: "resume",
+      firebase_screen_class: "resume",
+    });
     window.scrollTo(0, 0);
     window.addEventListener("keydown", this.onKeyDown);
   }

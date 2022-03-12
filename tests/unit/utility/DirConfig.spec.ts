@@ -3,60 +3,60 @@ import { expect } from 'chai'
 
 import FileSystem, { IFile } from '../../../src/utility/FileSystem';
 
-const FileSystem: FileSystem = new FileSystem();
+const fileSystem: FileSystem = new FileSystem();
 
 describe('FileSystem', function () {
     it('should get dir by absolute path', () => {
-        const result: IFile = FileSystem.getDir('/portfolio', '/portfolio/snapshot');
-        expect(result.name).to.equal('snapshot');
+        const result: IFile = fileSystem.getDir('/portfolio', '/portfolio/gallery');
+        expect(result.name).to.equal('gallery');
     });
 
     it('should get dir by relative path', () => {
-        const result: IFile = FileSystem.getDir('/portfolio/snapshot', '../../');
+        const result: IFile = fileSystem.getDir('/portfolio/snapshot', '../../');
         expect(result.name).to.equal('/');
     });
 
     it('should get dir by local path', () => {
-        const result: IFile = FileSystem.getDir('/portfolio', './');
+        const result: IFile = fileSystem.getDir('/portfolio', './');
         expect(result.name).to.equal('portfolio');
     });
 
     it('should throw exception if result is not a dir', () => {
         expect(() => {
-            FileSystem.getDir('/portfolio', './resume_zh');
-        }).to.throw('FileTypeMismatch: ./resume_zh');
+            fileSystem.getDir('/portfolio', './resume');
+        }).to.throw('FileTypeMismatch: ./resume');
     });
 
     it('should throw exception if dir not found', () => {
         expect(() => {
-            FileSystem.getDir('/portfolio', './not_found');
-        }).to.throw('NotFound: portfolio/not_found');
+            fileSystem.getDir('/portfolio', './not_found');
+        }).to.throw('NotFound: /portfolio/not_found');
     });
 
     it('should get executable by absolute path', () => {
-        const result: IFile = FileSystem.getExecutable('/portfolio', '/portfolio/resume_zh');
-        expect(result.name).to.equal('resume_zh');
+        const result: IFile = fileSystem.getExecutable('/portfolio', '/portfolio/resume');
+        expect(result.name).to.equal('resume');
     });
 
     it('should get executable by relative path', () => {
-        const result: IFile = FileSystem.getExecutable('/portfolio/snapshot', '../resume_zh');
-        expect(result.name).to.equal('resume_zh');
+        const result: IFile = fileSystem.getExecutable('/portfolio/snapshot', '../resume');
+        expect(result.name).to.equal('resume');
     });
 
     it('should get executable by local path', () => {
-        const result: IFile = FileSystem.getExecutable('/portfolio', './resume_zh');
-        expect(result.name).to.equal('resume_zh');
+        const result: IFile = fileSystem.getExecutable('/portfolio', './resume');
+        expect(result.name).to.equal('resume');
     });
 
     it('should throw exception if result is not a executable', () => {
         expect(() => {
-            FileSystem.getExecutable('/portfolio', './snapshot');
-        }).to.throw('FileTypeMismatch: ./snapshot');
+            fileSystem.getExecutable('/portfolio', './gallery');
+        }).to.throw('FileTypeMismatch: ./gallery');
     });
 
     it('should throw exception if dir not found', () => {
         expect(() => {
-            FileSystem.getExecutable('/portfolio', './not_found');
-        }).to.throw('NotFound: portfolio/not_found');
+            fileSystem.getExecutable('/portfolio', './not_found');
+        }).to.throw('NotFound: /portfolio/not_found');
     });
 });

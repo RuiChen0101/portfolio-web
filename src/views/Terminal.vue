@@ -7,14 +7,14 @@
       :props="props"
     />
     <CommandLineInput
-      v-if="!this.inExecuting"
+      v-if="!this.isExecuting"
       :dirPath="this.commandExecutor.currentDir"
       :commandChars="this.keyboardHandler.getCommandChars()"
       :cursorPosition="this.keyboardHandler.getCursorPosition()"
     />
     <LoadingPrint v-else />
     <RecommendCommand
-      v-if="!this.inExecuting"
+      v-if="!this.isExecuting"
       :recommends="this.commandExecutor.recommendations"
       @onClick="this.onRecommendClick"
     />
@@ -26,6 +26,7 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 import CmdInit from "@/components/CmdInit.vue";
 import LoadingPrint from "@/components/LoadingPrint.vue";
@@ -48,9 +49,14 @@ import CommandExecutor from "@/utility/CommandExecutor";
 export default class Terminal extends Vue {
   private keyboardHandler: KeyboardHandler = new KeyboardHandler();
   private commandExecutor: CommandExecutor = new CommandExecutor();
-  private inExecuting = false;
+  private isExecuting = false;
 
   mounted(): void {
+    const analytics = getAnalytics();
+    logEvent(analytics, "screen_view", {
+      firebase_screen: "terminal_portfolio",
+      firebase_screen_class: "terminal",
+    });
     window.addEventListener("keydown", this.onKeyDown);
     this.keyboardHandler.insertHistory("ls");
     this.commandExecutor.initRecommendations();
@@ -72,9 +78,9 @@ export default class Terminal extends Vue {
     this.keyboardHandler.clear();
     (this.$refs.dummyInput as any).value = "";
     this.keyboardHandler.insertHistory(command);
-    this.inExecuting = true;
+    this.isExecuting = true;
     await this.commandExecutor.run(command);
-    this.inExecuting = false;
+    this.isExecuting = false;
   }
 
   private async onKeyDown(ev: KeyboardEvent): Promise<void> {
@@ -83,9 +89,9 @@ export default class Terminal extends Vue {
       const command: string = this.keyboardHandler.getCommand();
       this.keyboardHandler.clear();
       (this.$refs.dummyInput as any).value = "";
-      this.inExecuting = true;
+      this.isExecuting = true;
       await this.commandExecutor.run(command);
-      this.inExecuting = false;
+      this.isExecuting = false;
     }
   }
 }

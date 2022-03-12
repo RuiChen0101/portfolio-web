@@ -1,10 +1,12 @@
+import { getAnalytics, logEvent } from "firebase/analytics";
+
 import List from "./Commands/List";
 import * as Injector from "./Injector";
+import SSHCopy from "./Commands/SSHCopy";
 import ChangeDir from "./Commands/ChangeDir";
 import Concatenate from "./Commands/Concatenate";
 import FileSystem, { IFile } from "./FileSystem";
 import { IExecuteResult } from "./Commands/IExecutable";
-import SSHCopy from "./Commands/SSHCopy";
 
 class CommandExecutor {
     private _commandStack: any[] = [];
@@ -49,7 +51,13 @@ class CommandExecutor {
             const command: string = args[0];
             if (command === 'cd') {
                 const cd = new ChangeDir();
-                this.appendResult(await cd.execute(pwd, args));
+                const result: IExecuteResult = await cd.execute(pwd, args);
+                this.appendResult(result);
+                const analytics = getAnalytics();
+                logEvent(analytics, "screen_view", {
+                    firebase_screen: `terminal${result.pwd?.replaceAll('/', '_')}`,
+                    firebase_screen_class: "terminal",
+                });
                 return;
             } else if (command === 'ls') {
                 const ls = new List();
