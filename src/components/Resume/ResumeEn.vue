@@ -14,9 +14,10 @@
           Studying for master degree of Computer Science at National Taipei
           University of Technology. Has experience in software development,
           design pattern and software testing, learning and sharping my coding
-          skill is what I am passionate about. I am work at Federal IntelliGence
-          Co., Ltd. as Supervisor of R&D Department at the same time, developing
-          and maintaining the product of the company - TigerMaster.
+          skill is what I am passionate about. Currently working at Industrial
+          Technology Research Institute as Software Engineer, Designing and
+          developing software system for the first 4D virtual studio in Taiwan,
+          IpLab.
         </p>
         <div class="link d-flex flex-wrap">
           <a href="mailto:ruichen0101@gmail.com" target="_blank" rel="noopener"
@@ -57,7 +58,7 @@
           >
         </p>
         <p>&nbsp;&nbsp;├──National Taipei University of Technology</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2022</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2023</span></p>
         <p>
           ·&nbsp;<span class="highlight-yellow"
             >Bachelor of Computer Science</span
@@ -107,7 +108,29 @@
       <p>---------------------------------</p>
       <div class="experience">
         <p>
-          ·&nbsp;<span class="highlight-grey">2020/11 - NOW</span> | Federal
+          ·&nbsp;<span class="highlight-grey">2022/03 - NOW</span> | Industrial
+          Technology Research Institute, Business Analysis with Digital
+          Convergence Technologies Dept.
+          <span class="highlight-yellow">Software Engineer</span>
+        </p>
+        <p>&nbsp;&nbsp;├──Developing smart contract for the 4DNFT.</p>
+        <p>
+          &nbsp;&nbsp;├──Operating ViCon and 4DView for the first 4D virtual
+          studio in Taiwan, IpLab.
+        </p>
+        <p>
+          &nbsp;&nbsp;└──Designing and developing digital collection platform.
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="highlight-green">#Cloud Functions</span>,
+          <span class="highlight-green">#Golang</span>,
+          <span class="highlight-green">#React.js</span>
+        </p>
+      </div>
+      <div class="experience">
+        <p>
+          ·&nbsp;<span class="highlight-grey">2020/11 - 2022/08</span> | Federal
           IntelliGence Co., Ltd.,
           <span class="highlight-yellow">Supervisor of R&D Department</span>
         </p>
@@ -129,9 +152,10 @@
         </p>
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="highlight-green">#Cloud Function</span>,
+          <span class="highlight-green">#Cloud Functions</span>,
           <span class="highlight-green">#Flutter</span>,
-          <span class="highlight-green">#Spring Boot</span>
+          <span class="highlight-green">#Spring Boot</span>,
+          <span class="highlight-green">#Vue.js</span>
         </p>
       </div>
       <div class="experience">
@@ -194,7 +218,7 @@
         </p>
         <p>
           &nbsp;&nbsp;└──For the 5 municipal level e-Sports tournament, there
-          are over 1500 participants, 1 million reaches and 432 players finish
+          are over 1500 participants, 1 million viewers and 432 players finish
           their enrollment via our website.
         </p>
         <p>

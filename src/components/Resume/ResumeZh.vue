@@ -12,9 +12,7 @@
         <p>---------------------------------</p>
         <p>
           現就讀於國立臺北科技大學
-          資訊工程所。熱衷於學習與挑戰不同的程式技術，在軟體
-          開發、軟體架構與軟體測試方面皆有研究。同時於飛達智能股份有限公司擔任研發部
-          主管一職，負責帶領團隊進行旗下產品—「師虎來了」的開發與維護。
+          資訊工程所。熱衷於學習與挑戰不同的程式技術，在軟體開發、軟體架構與軟體測試方面皆有研究。同時於工業研究院擔任軟體工程師一職，負責台灣第一座4D虛擬攝影棚-IpLab-軟體系統的設計與維護。
         </p>
         <div class="link d-flex flex-wrap">
           <a href="mailto:ruichen0101@gmail.com" target="_blank" rel="noopener"
@@ -51,7 +49,7 @@
         <p>------------</p>
         <p>·&nbsp;<span class="highlight-yellow">資訊工程 碩士</span></p>
         <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2022</span></p>
+        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2023</span></p>
         <p>·&nbsp;<span class="highlight-yellow">資訊工程 學士</span></p>
         <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
         <p>&nbsp;&nbsp;└──<span class="highlight-grey">2017~2021</span></p>
@@ -97,7 +95,23 @@
       <p>---------------------------------</p>
       <div class="experience">
         <p>
-          ·&nbsp;<span class="highlight-grey">2020/11 - NOW</span> |
+          ·&nbsp;<span class="highlight-grey">2022/03 - NOW</span> |
+          <span class="highlight-yellow">軟體工程師</span>·工業技術研究院
+          資料與影像商務分析系統技術部
+        </p>
+        <p>&nbsp;&nbsp;├──4DNFT發行合約與系統開發</p>
+        <p>&nbsp;&nbsp;├──協助台灣第一座4D虛擬攝影棚-IpLab內容產製</p>
+        <p>&nbsp;&nbsp;└──數位內容收藏平台開發</p>
+        <p>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="highlight-green">#Cloud Functions</span>,
+          <span class="highlight-green">#Golang</span>,
+          <span class="highlight-green">#React.js</span>
+        </p>
+      </div>
+      <div class="experience">
+        <p>
+          ·&nbsp;<span class="highlight-grey">2020/11 - 2022/08</span> |
           <span class="highlight-yellow">研發部 課長</span>·飛達智能股份有限公司
         </p>
         <p>
@@ -110,9 +124,10 @@
         </p>
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="highlight-green">#Cloud Function</span>,
+          <span class="highlight-green">#Cloud Functions</span>,
           <span class="highlight-green">#Flutter</span>,
-          <span class="highlight-green">#Spring Boot</span>
+          <span class="highlight-green">#Spring Boot</span>,
+          <span class="highlight-green">#Vue.js</span>
         </p>
       </div>
       <div class="experience">

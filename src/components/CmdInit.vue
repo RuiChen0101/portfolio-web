@@ -18,8 +18,9 @@
       <p>
         I am a Full-Stack Developer that have 5+ years experiences in software
         development, design pattern and software testing. Currently working at
-        Federal IntelliGence Co., Ltd. as Supervisor of R&D Department,
-        Maintaining and developing product of company - TimerMaster.
+        Industrial Technology Research Institute as Software Engineer, Designing
+        and developing software system for the first 4D virtual studio in
+        Taiwan, IpLab.
       </p>
       <br />
       <p>
