@@ -11,8 +11,7 @@
         <p>一位全端軟體開發者</p>
         <p>---------------------------------</p>
         <p>
-          現就讀於國立臺北科技大學
-          資訊工程所。熱衷於學習與挑戰不同的程式技術，在軟體開發、軟體架構與軟體測試方面皆有研究。同時於工業研究院擔任軟體工程師一職，負責台灣第一座4D虛擬攝影棚-IpLab-軟體系統的設計與維護。
+          畢業於國立臺北科技大學資訊工程所並在軟體開發、軟體架構與軟體測試方面擁有5年以上的經驗。目前在工業研究院擔任軟體工程師一職，負責台灣第一座4D虛擬攝影棚-IpLab-的軟體系統的設計與維護。
         </p>
         <div class="link d-flex flex-wrap">
           <a href="mailto:ruichen0101@gmail.com" target="_blank" rel="noopener"
@@ -47,12 +46,28 @@
       <div class="education col-12 col-md-6">
         <h2>學歷</h2>
         <p>------------</p>
-        <p>·&nbsp;<span class="highlight-yellow">資訊工程 碩士</span></p>
+        <p>
+          ·&nbsp;<span class="highlight-yellow">資訊工程 碩士</span>&nbsp;<span
+            class="highlight-grey"
+            >2021~2023</span
+          >
+        </p>
         <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2023</span></p>
-        <p>·&nbsp;<span class="highlight-yellow">資訊工程 學士</span></p>
-        <p>&nbsp;&nbsp;├──國立臺北科技大學</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2017~2021</span></p>
+        <p>
+          &nbsp;&nbsp;└──畢業論文：<a
+            href="https://ndltd.ncl.edu.tw/index.html?o=dnclcdr&s=id=%22111TIT00392002%22.&searchmode=basic"
+            target="_blank"
+            rel="noopener"
+            >UnifyQL - 面向微服務系統的資料查詢框架</a
+          >
+        </p>
+        <p>
+          ·&nbsp;<span class="highlight-yellow">資訊工程 學士</span>&nbsp;<span
+            class="highlight-grey"
+            >2017~2021</span
+          >
+        </p>
+        <p>&nbsp;&nbsp;└──國立臺北科技大學</p>
       </div>
       <div class="skills col-12 col-md-6">
         <h2>技能</h2>
@@ -60,17 +75,18 @@
         <p>·&nbsp;Language</p>
         <p>
           &nbsp;&nbsp;└──<span class="highlight-green">Typescript</span>,
-          <span class="highlight-green">Java</span>,
+          <span class="highlight-green">Golang</span>,
           <span class="highlight-green">Dart</span>,
           <span class="highlight-green">C/C++</span>,<span
             class="highlight-green"
           >
             Python</span
-          >, <span class="highlight-green">Golang</span>
+          >, <span class="highlight-green">Java</span>
         </p>
         <p>·&nbsp;Framework & Libraries</p>
         <p>
           &nbsp;&nbsp;├──<span class="highlight-green">Node.js</span>,
+          <span class="highlight-green">React.js</span>,
           <span class="highlight-green">Spring Boot</span>,
           <span class="highlight-green">Vue.js</span>,
           <span class="highlight-green">Flutter</span>,
@@ -97,25 +113,26 @@
         <p>
           ·&nbsp;<span class="highlight-grey">2022/03 - NOW</span> |
           <span class="highlight-yellow">軟體工程師</span>·工業技術研究院
-          資料與影像商務分析系統技術部
+          多元宇宙影像分析創新技術部
         </p>
-        <p>&nbsp;&nbsp;├──4DNFT發行合約與系統開發</p>
+        <p>&nbsp;&nbsp;├──世界首創4DNFT發行智能合約與系統開發</p>
         <p>&nbsp;&nbsp;├──協助台灣第一座4D虛擬攝影棚-IpLab內容產製</p>
         <p>&nbsp;&nbsp;└──數位內容收藏平台開發</p>
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="highlight-green">#Cloud Functions</span>,
           <span class="highlight-green">#Golang</span>,
           <span class="highlight-green">#React.js</span>
         </p>
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;<span class="highlight-grey">2020/11 - 2022/08</span> |
+          ·&nbsp;<span class="highlight-grey">2020/10 - 2022/08</span> |
           <span class="highlight-yellow">研發部 課長</span>·飛達智能股份有限公司
         </p>
         <p>
-          &nbsp;&nbsp;├──協助公司產品APP-師虎來了重製版開發, 於2021年9月順利上架
+          &nbsp;&nbsp;├──協助公司產品APP-師虎來了重製版開發,
+          於2021年9月成功上架, 新系統較舊版提升了100x的效能,
+          將回應時間從~10s降至~100ms
         </p>
         <p>&nbsp;&nbsp;├──負責設計系統架構與資料庫、後端系統與App的開發維護</p>
         <p>&nbsp;&nbsp;├──規劃與協調各部門間的需求與同事的開發進度</p>
@@ -212,7 +229,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class ResumeZh extends Vue {}
+export default class ResumeZh extends Vue { }
 </script>
 
 <style lang="scss" scoped>

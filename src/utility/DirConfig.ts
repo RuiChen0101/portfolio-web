@@ -87,21 +87,14 @@ const fileRoot: IFile = {
                     value: '/download',
                     date: 'Feb 18 20:24',
                     size: '4096',
-                    recommendation: ['cd ../', 'scp ./resume_zh.pdf', 'scp ./resume_en.pdf'],
+                    recommendation: ['cd ../', 'scp ./resume_en.pdf'],
                     subFiles: {
-                        'resume_zh.pdf': {
-                            type: EFileType.FILE,
-                            name: 'resume_zh.pdf',
-                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_zh.pdf?alt=media&token=257a2cd6-cbd7-4cb5-9a4c-cf7986be48ac',
-                            date: 'Feb 20 23:14',
-                            size: '20539036'
-                        },
                         'resume_en.pdf': {
                             type: EFileType.FILE,
                             name: 'resume_en.pdf',
-                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_en.pdf?alt=media&token=9a799a32-7abf-4c90-acc1-3627b647e537',
-                            date: 'Feb 20 23:14',
-                            size: '20252442'
+                            value: 'https://firebasestorage.googleapis.com/v0/b/ruichen-porfolio.appspot.com/o/resume_en.pdf?alt=media&token=a823a949-249e-46b7-b885-a87bcb2cc978',
+                            date: 'Sept 22 23:20',
+                            size: '432724'
                         },
                     }
                 },

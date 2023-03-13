@@ -11,12 +11,10 @@
         <p>A Full-Stack Developer</p>
         <p>---------------------------------</p>
         <p>
-          Studying for master degree of Computer Science at National Taipei
-          University of Technology. Has experience in software development,
-          design pattern and software testing, learning and sharping my coding
-          skill is what I am passionate about. Currently working at Industrial
+          I have 5+ years of experience in software development, design
+          patterns, and software testing. Currently working at Industrial
           Technology Research Institute as Software Engineer, Designing and
-          developing software system for the first 4D virtual studio in Taiwan,
+          developing software systems for Taiwan's first 4D virtual studio,
           IpLab.
         </p>
         <div class="link d-flex flex-wrap">
@@ -53,19 +51,24 @@
         <h2>Educations</h2>
         <p>------------</p>
         <p>
-          ·&nbsp;<span class="highlight-yellow">
-            Master of Computer Science</span
-          >
+          ·&nbsp;<span class="highlight-yellow">Master of Computer Science</span
+          >&nbsp;<span class="highlight-grey">2021~2023</span>
         </p>
         <p>&nbsp;&nbsp;├──National Taipei University of Technology</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2021~2023</span></p>
+        <p>
+          &nbsp;&nbsp;└──Master thesis:<a
+            href="https://ndltd.ncl.edu.tw/index.html?o=dnclcdr&s=id=%22111TIT00392002%22.&searchmode=basic"
+            target="_blank"
+            rel="noopener"
+            >UnifyQL - A Data Query Framework for Microservice Systems</a
+          >
+        </p>
         <p>
           ·&nbsp;<span class="highlight-yellow"
             >Bachelor of Computer Science</span
-          >
+          >&nbsp;<span class="highlight-grey">2017~2021</span>
         </p>
-        <p>&nbsp;&nbsp;├──National Taipei University of Technology</p>
-        <p>&nbsp;&nbsp;└──<span class="highlight-grey">2017~2021</span></p>
+        <p>&nbsp;&nbsp;└──National Taipei University of Technology</p>
       </div>
       <div class="skills col-12 col-md-6">
         <h2>Skills</h2>
@@ -73,17 +76,18 @@
         <p>·&nbsp;Language</p>
         <p>
           &nbsp;&nbsp;└──<span class="highlight-green">Typescript</span>,
-          <span class="highlight-green">Java</span>,
+          <span class="highlight-green">Golang</span>,
           <span class="highlight-green">Dart</span>,
           <span class="highlight-green">C/C++</span>,<span
             class="highlight-green"
           >
             Python</span
-          >, <span class="highlight-green">Golang</span>
+          >, <span class="highlight-green">Java</span>
         </p>
         <p>·&nbsp;Framework & Libraries</p>
         <p>
           &nbsp;&nbsp;├──<span class="highlight-green">Node.js</span>,
+          <span class="highlight-green">React.js</span>,
           <span class="highlight-green">Spring Boot</span>,
           <span class="highlight-green">Vue.js</span>,
           <span class="highlight-green">Flutter</span>,
@@ -109,11 +113,13 @@
       <div class="experience">
         <p>
           ·&nbsp;<span class="highlight-grey">2022/03 - NOW</span> | Industrial
-          Technology Research Institute, Business Analysis with Digital
-          Convergence Technologies Dept.
+          Technology Research Institute, Interoperable Metaverse Video Analytics
+          Innovation Technologies Dept.
           <span class="highlight-yellow">Software Engineer</span>
         </p>
-        <p>&nbsp;&nbsp;├──Developing smart contract for the 4DNFT.</p>
+        <p>
+          &nbsp;&nbsp;├──Developing smart contract for the world first 4DNFT.
+        </p>
         <p>
           &nbsp;&nbsp;├──Operating ViCon and 4DView for the first 4D virtual
           studio in Taiwan, IpLab.
@@ -123,20 +129,21 @@
         </p>
         <p>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="highlight-green">#Cloud Functions</span>,
           <span class="highlight-green">#Golang</span>,
           <span class="highlight-green">#React.js</span>
         </p>
       </div>
       <div class="experience">
         <p>
-          ·&nbsp;<span class="highlight-grey">2020/11 - 2022/08</span> | Federal
+          ·&nbsp;<span class="highlight-grey">2020/10 - 2022/08</span> | Federal
           IntelliGence Co., Ltd.,
           <span class="highlight-yellow">Supervisor of R&D Department</span>
         </p>
         <p>
           &nbsp;&nbsp;├──Remastering the product of the company, TigerMaster,
-          and hit the market successfully at September 2021.
+          and hit the market successfully at September 2021. The new system has
+          100x performance improvement compare to old one, it reduce the
+          response time from ~10s to ~100ms.
         </p>
         <p>
           &nbsp;&nbsp;├──Developing and maintaining database, backend service
@@ -257,7 +264,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class ResumeEn extends Vue {}
+export default class ResumeEn extends Vue { }
 </script>
 
 <style lang="scss" scoped>

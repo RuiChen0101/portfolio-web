@@ -16,10 +16,10 @@
       </p>
       <br />
       <p>
-        I am a Full-Stack Developer that have 5+ years experiences in software
-        development, design pattern and software testing. Currently working at
+        I am a Full-Stack Developer that has 5+ years of experience in software
+        development, design patterns, and software testing. Currently working at
         Industrial Technology Research Institute as Software Engineer, Designing
-        and developing software system for the first 4D virtual studio in
+        and developing software systems for the first 4D virtual studio in
         Taiwan, IpLab.
       </p>
       <br />
@@ -50,7 +50,7 @@
 <script lang="ts">
 import { Vue } from "vue-class-component";
 
-export default class CmdInit extends Vue {}
+export default class CmdInit extends Vue { }
 </script>
 
 <style lang="scss" scoped>
